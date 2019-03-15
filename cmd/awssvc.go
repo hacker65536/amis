@@ -1,7 +1,15 @@
 package cmd
 
-import "github.com/aws/aws-sdk-go-v2/service/ec2"
+import (
+	"github.com/aws/aws-sdk-go-v2/aws"
+	"github.com/aws/aws-sdk-go-v2/aws/external"
+)
 
-func initec2svc() {
-	ec2svc = ec2.New(cfg)
+var (
+	cfg aws.Config
+)
+
+func init() {
+	cfg, _ = external.LoadDefaultAWSConfig()
+
 }

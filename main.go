@@ -14,7 +14,7 @@
 
 package main
 
-import "amis/cmd"
+import "github.com/hacker65536/amis/cmd"
 
 func main() {
 	cmd.Execute()

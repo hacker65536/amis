@@ -1,0 +1,13 @@
+owner-id: 
+- 137112412989 
+is-public: 
+- true
+virtualization-type: 
+- hvm
+root-device-type: 
+ - ebs
+block-device-mapping:
+  volume-type: 
+    - gp2
+
+
