@@ -5,64 +5,32 @@ import (
 	"github.com/aws/aws-sdk-go-v2/service/ec2"
 )
 
+var filterList map[string]string = map[string]string{
+	"architecture":                     "x86_64",
+	"block-device-mapping.volume-type": "gp2",
+	"ena-support":                      "true",
+	"image-type":                       "machine",
+	"is-public":                        "true",
+	"root-device-type":                 "ebs",
+	"sriov-net-support":                "simple",
+	"state":                            "available",
+	"virtualization-type":              "hvm",
+}
+
 var (
-	filterTmp = []ec2.Filter{
-		{
-			Name: aws.String("is-public"),
-			Values: []string{
-				"true",
-			},
-		},
-		{
-			Name: aws.String("virtualization-type"),
-			Values: []string{
-				"hvm",
-			},
-		},
-		{
-			Name: aws.String("root-device-type"),
-			Values: []string{
-				"ebs",
-			},
-		},
-		{
-			Name: aws.String("architecture"),
-			Values: []string{
-				"x86_64",
-			},
-		},
-		{
-			Name: aws.String("image-type"),
-			Values: []string{
-				"machine",
-			},
-		},
-		{
-			Name: aws.String("ena-support"),
-			Values: []string{
-				"true",
-			},
-		},
-		{
-			Name: aws.String("sriov-net-support"),
-			Values: []string{
-				"simple",
-			},
-		},
-		{
-			Name: aws.String("state"),
-			Values: []string{
-				"available",
-			},
-		},
-		{
-			Name: aws.String("block-device-mapping.volume-type"),
-			Values: []string{
-				"gp2",
-			},
-		},
-	}
+	filterTmp = []ec2.Filter{}
 )
+
+func init() {
+	for k, v := range filterList {
+		filterTmp = append(filterTmp, []ec2.Filter{
+			{
+				Name:   aws.String(k),
+				Values: []string{v},
+			},
+		}...)
+	}
+}
 
 func filter(opt string) []ec2.Filter {
 	fs := []ec2.Filter{}
