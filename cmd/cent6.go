@@ -20,9 +20,9 @@ import (
 	"github.com/spf13/cobra"
 )
 
-// amz2Cmd represents the amz2 command
-var amz2Cmd = &cobra.Command{
-	Use:   "amz2",
+// cent6Cmd represents the cent6 command
+var cent6Cmd = &cobra.Command{
+	Use:   "cent6",
 	Short: "A brief description of your command",
 	Long: `A longer description that spans multiple lines and likely contains examples
 and usage of using your command. For example:
@@ -31,21 +31,21 @@ Cobra is a CLI library for Go that empowers applications.
 This application is a tool to generate the needed files
 to quickly create a Cobra application.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("amz2 called")
-		describe("amz2")
+		fmt.Println("cent6 called")
+		describe("cent6")
 	},
 }
 
 func init() {
-	rootCmd.AddCommand(amz2Cmd)
+	rootCmd.AddCommand(cent6Cmd)
 
 	// Here you will define your flags and configuration settings.
 
 	// Cobra supports Persistent Flags which will work for this command
 	// and all subcommands, e.g.:
-	// amz2Cmd.PersistentFlags().String("foo", "", "A help for foo")
+	// cent6Cmd.PersistentFlags().String("foo", "", "A help for foo")
 
 	// Cobra supports local flags which will only run when this command
 	// is called directly, e.g.:
-	// amz2Cmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
+	// cent6Cmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 }

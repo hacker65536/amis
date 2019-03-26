@@ -36,6 +36,29 @@ func filter(opt string) []ec2.Filter {
 	fs := []ec2.Filter{}
 
 	switch opt {
+	case "amz":
+		f := []ec2.Filter{
+			{
+				Name: aws.String("owner-id"),
+				Values: []string{
+					"137112412989",
+				},
+			},
+			{
+				Name: aws.String("manifest-location"),
+				Values: []string{
+					"amazon/amzn-ami-hvm*",
+				},
+			},
+			{
+				Name: aws.String("description"),
+				Values: []string{
+					"Amazon Linux AMI*",
+				},
+			},
+		}
+		fs = append(filterTmp, f...)
+
 	case "amz2":
 		f := []ec2.Filter{
 			{
@@ -58,6 +81,15 @@ func filter(opt string) []ec2.Filter {
 			},
 		}
 		fs = append(filterTmp, f...)
+
+	case "cent6":
+		f := ec2.Filter{
+			Name: aws.String("product-code"),
+			Values: []string{
+				"6x5jmcajty9edm3f211pqjfn2",
+			},
+		}
+		fs = append(filterTmp, f)
 
 	case "cent7":
 		f := ec2.Filter{
